@@ -115,106 +115,141 @@ function Leads() {
 
   return (
     <Layout>
-      <h1 className="page-title">Lead Management</h1>
-
-      <div className="form-card">
-        <h2>{editId ? "Edit Lead" : "Create New Lead"}</h2>
-
-        <form onSubmit={saveLead}>
-          <div className="form-grid">
-            <input
-              name="lead_name"
-              placeholder="Lead Name"
-              value={form.lead_name}
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              name="company_name"
-              placeholder="Company Name"
-              value={form.company_name}
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              name="email"
-              placeholder="Email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              name="phone"
-              placeholder="Phone Number"
-              value={form.phone}
-              onChange={handleChange}
-            />
-
-            <select
-              name="lead_source"
-              value={form.lead_source}
-              onChange={handleChange}
-            >
-              <option>Website</option>
-              <option>LinkedIn</option>
-              <option>Referral</option>
-              <option>Cold Email</option>
-              <option>Event</option>
-            </select>
-
-            <input
-              name="assigned_salesperson"
-              placeholder="Assigned Salesperson"
-              value={form.assigned_salesperson}
-              onChange={handleChange}
-            />
-
-            <select name="status" value={form.status} onChange={handleChange}>
-              <option>New</option>
-              <option>Contacted</option>
-              <option>Qualified</option>
-              <option>Proposal Sent</option>
-              <option>Won</option>
-              <option>Lost</option>
-            </select>
-
-            <input
-              name="estimated_value"
-              type="number"
-              placeholder="Estimated Deal Value"
-              value={form.estimated_value}
-              onChange={handleChange}
-            />
-          </div>
-
-          <button className="primary-btn" type="submit">
-            {editId ? "Update Lead" : "Add Lead"}
-          </button>
-
-          {editId && (
-            <button type="button" className="cancel-btn" onClick={cancelEdit}>
-              Cancel
-            </button>
-          )}
-        </form>
+      <div className="dashboard-header">
+        <h1 className="page-title">Lead Management</h1>
+        <p className="subtitle">Manage, track and convert your business opportunities.</p>
       </div>
 
       <div className="form-card">
-        <h2>Search and Filter</h2>
+        <h2 style={{ marginBottom: '20px', fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <i className="ph-bold ph-plus-circle" style={{ color: 'var(--primary)' }}></i>
+          {editId ? "Edit Lead Details" : "Create New Lead"}
+        </h2>
 
+        <form onSubmit={saveLead}>
+          <div className="form-grid">
+            <div className="form-group">
+              <label>Lead Name</label>
+              <input
+                name="lead_name"
+                placeholder="John Doe"
+                value={form.lead_name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Company</label>
+              <input
+                name="company_name"
+                placeholder="Acme Corp"
+                value={form.company_name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                name="email"
+                type="email"
+                placeholder="john@example.com"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Phone</label>
+              <input
+                name="phone"
+                placeholder="+1 234 567 890"
+                value={form.phone}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Source</label>
+              <select
+                name="lead_source"
+                value={form.lead_source}
+                onChange={handleChange}
+              >
+                <option>Website</option>
+                <option>LinkedIn</option>
+                <option>Referral</option>
+                <option>Cold Email</option>
+                <option>Event</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Salesperson</label>
+              <input
+                name="assigned_salesperson"
+                placeholder="Assign to..."
+                value={form.assigned_salesperson}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Status</label>
+              <select name="status" value={form.status} onChange={handleChange}>
+                <option>New</option>
+                <option>Contacted</option>
+                <option>Qualified</option>
+                <option>Proposal Sent</option>
+                <option>Won</option>
+                <option>Lost</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Value (Rs.)</label>
+              <input
+                name="estimated_value"
+                type="number"
+                placeholder="50000"
+                value={form.estimated_value}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: '24px', display: 'flex', gap: '12px' }}>
+            <button className="primary-btn" type="submit">
+              <i className={editId ? "ph-bold ph-floppy-disk" : "ph-bold ph-plus"}></i>
+              {editId ? "Update Lead" : "Add Lead"}
+            </button>
+
+            {editId && (
+              <button type="button" className="cancel-btn" onClick={cancelEdit}>
+                Cancel
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
+
+      <div className="form-card" style={{ background: '#f1f5f9', border: 'none' }}>
+        <h2 style={{ marginBottom: '16px', fontSize: '16px' }}>Filters</h2>
         <div className="form-grid">
           <input
-            placeholder="Search by lead, company, or email"
+            placeholder="Search by name, company..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            style={{ background: 'white' }}
           />
 
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
+            style={{ background: 'white' }}
           >
             <option value="">All Statuses</option>
             <option>New</option>
@@ -228,6 +263,7 @@ function Leads() {
           <select
             value={sourceFilter}
             onChange={(e) => setSourceFilter(e.target.value)}
+            style={{ background: 'white' }}
           >
             <option value="">All Sources</option>
             <option>Website</option>
@@ -240,6 +276,7 @@ function Leads() {
           <select
             value={salespersonFilter}
             onChange={(e) => setSalespersonFilter(e.target.value)}
+            style={{ background: 'white' }}
           >
             <option value="">All Salespersons</option>
             {salespeople.map((person) => (
@@ -250,60 +287,78 @@ function Leads() {
       </div>
 
       <div className="table-card">
-        <h2>All Leads</h2>
+        <div style={{ padding: '24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h2 style={{ fontSize: '18px' }}>Leads Directory</h2>
+          <span style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Showing {filteredLeads.length} leads</span>
+        </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Lead</th>
-              <th>Company</th>
-              <th>Email</th>
-              <th>Source</th>
-              <th>Salesperson</th>
-              <th>Status</th>
-              <th>Value</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {filteredLeads.map((lead) => (
-              <tr key={lead.id}>
-                <td>
-                  <Link className="action-link" to={`/leads/${lead.id}`}>
-                    {lead.lead_name}
-                  </Link>
-                </td>
-                <td>{lead.company_name}</td>
-                <td>{lead.email}</td>
-                <td>{lead.lead_source}</td>
-                <td>{lead.assigned_salesperson}</td>
-                <td>
-                  <span className="status">{lead.status}</span>
-                </td>
-                <td>Rs. {lead.estimated_value}</td>
-                <td>
-                  <button className="edit-btn" onClick={() => editLead(lead)}>
-                    Edit
-                  </button>
-
-                  <button
-                    className="delete-btn"
-                    onClick={() => deleteLead(lead.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-
-            {filteredLeads.length === 0 && (
+        <div style={{ overflowX: 'auto' }}>
+          <table>
+            <thead>
               <tr>
-                <td colSpan="8">No leads found</td>
+                <th>Lead</th>
+                <th>Company</th>
+                <th>Source</th>
+                <th>Salesperson</th>
+                <th>Status</th>
+                <th>Value</th>
+                <th style={{ textAlign: 'right' }}>Actions</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {filteredLeads.map((lead) => (
+                <tr key={lead.id}>
+                  <td>
+                    <Link className="action-link" to={`/leads/${lead.id}`} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'var(--bg-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 'bold', color: 'var(--primary)' }}>
+                        {lead.lead_name.charAt(0)}
+                      </div>
+                      {lead.lead_name}
+                    </Link>
+                  </td>
+                  <td>{lead.company_name}</td>
+                  <td>
+                    <span style={{ fontSize: '12px', color: 'var(--text-muted)', background: '#f1f5f9', padding: '2px 8px', borderRadius: '4px' }}>
+                      {lead.lead_source}
+                    </span>
+                  </td>
+                  <td>{lead.assigned_salesperson || 'Unassigned'}</td>
+                  <td>
+                    <span className={`status status-${lead.status.toLowerCase().replace(' ', '-')}`}>
+                      {lead.status}
+                    </span>
+                  </td>
+                  <td style={{ fontWeight: '600' }}>Rs. {Number(lead.estimated_value).toLocaleString()}</td>
+                  <td style={{ textAlign: 'right' }}>
+                    <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                      <button className="edit-btn" onClick={() => editLead(lead)} title="Edit">
+                        <i className="ph ph-pencil-simple"></i>
+                      </button>
+
+                      <button
+                        className="delete-btn"
+                        onClick={() => deleteLead(lead.id)}
+                        title="Delete"
+                      >
+                        <i className="ph ph-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+
+              {filteredLeads.length === 0 && (
+                <tr>
+                  <td colSpan="7" style={{ textAlign: 'center', padding: '40px', color: 'var(--text-muted)' }}>
+                    <i className="ph ph-folder-open" style={{ fontSize: '48px', marginBottom: '10px', display: 'block' }}></i>
+                    No leads found matching your criteria
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </Layout>
   );

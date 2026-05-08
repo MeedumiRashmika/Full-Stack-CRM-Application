@@ -92,4 +92,4 @@ JWT_SECRET=my_crm_secret_key
 ## Demo Video
 
 ```bash 
-https://drive.google.com/file/d/1TdhOAJ1WqjW1vfGfw4dm-Sro5dbjIQ39/view?usp=drive_link
+https://drive.google.com/file/d/1wj_6WgWOhsuFEw_hmPvBUjZ_gtdzws89/view?usp=drive_link
