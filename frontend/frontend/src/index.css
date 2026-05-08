@@ -1,0 +1,242 @@
+* {
+  box-sizing: border-box;
+}
+.note-box {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+.edit-btn {
+  padding: 8px 12px;
+  background: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.cancel-btn {
+  margin-left: 10px;
+  padding: 12px 18px;
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.note-card {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border-left: 4px solid #2563eb;
+}
+
+.action-link {
+  color: #2563eb;
+  font-weight: bold;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #1f2937;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Login */
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2563eb, #0f172a);
+}
+
+.login-card {
+  width: 380px;
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.login-card p {
+  text-align: center;
+  color: #6b7280;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 18px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 230px;
+  background: #111827;
+  color: white;
+  padding: 25px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar a,
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  color: white;
+  background: transparent;
+  border: none;
+  text-align: left;
+  border-radius: 8px;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+  background: #374151;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.page-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  margin: 0;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.card p {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0 0;
+}
+
+/* Form */
+.form-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.form-grid input,
+.form-grid select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.primary-btn {
+  margin-top: 15px;
+  padding: 12px 18px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.delete-btn {
+  padding: 8px 12px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+/* Table */
+.table-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #f9fafb;
+  text-align: left;
+  padding: 12px;
+}
+
+td {
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.status {
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 13px;
+}
